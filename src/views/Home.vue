@@ -21,7 +21,7 @@
           <textarea v-model="secretBody" name="secret" cols="30" rows="10"></textarea>
         </div>
         <div class="card-expiration">
-          <label for="expiration">Expirate in: </label>
+          <label for="expiration">Expiration in: </label>
           <select v-model="selectedTime" name="expiration" >
             <option value="5">5 min</option>
             <option value="10">10 min</option>
