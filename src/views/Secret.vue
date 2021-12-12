@@ -84,6 +84,7 @@ export default {
   }
 
   .secret {
+    position:relative;
     width: 100%;
     height: 90vh;
     display: flex;
@@ -203,6 +204,7 @@ export default {
   }
 
 .secret {
+  position:relative;
   width: 100%;
   height: 90vh;
   display: flex;

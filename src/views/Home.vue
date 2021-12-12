@@ -25,6 +25,13 @@
           <select v-model="selectedTime" name="expiration" >
             <option value="5">5 min</option>
             <option value="10">10 min</option>
+            <option value="30">30 min</option>
+            <option value="60">1 hour </option>
+            <option value="360">6 hour</option>
+            <option value="729">12 hour</option>
+            <option value="1440">1 day</option>
+            <option value="4320">3 day</option>
+            <option value="10080">1 week</option>
           </select>
         </div>
       </div>
@@ -92,7 +99,7 @@ export default {
   },
   setup() {
     const secretBody = ref('')
-    const selectedTime = ref('')
+    const selectedTime = ref('5')
     const secretUrl = ref('')
     const status = ref({
       DEFAULT: 'default',
@@ -148,7 +155,7 @@ export default {
         secretUrl.value= `${process.env.VUE_APP_BASE_URL}/secret/${response.data._id}/${response.data._secretKey}`
         setTimeout(() => okSecretAnimation(), 4000);
       } catch (error) {
-        
+        console.log(error)
       }
     }
 
@@ -162,21 +169,42 @@ export default {
 </script>
 
 <style scoped>
+option {
+    z-index:1;
+    margin:0 0;
+    padding:0 0;
+    list-style:none;
+    border:1px solid #ccc;
+    background-color: rgba(22, 21, 26, 1);
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+option li {
+    padding:0 6px;
+    margin:0 0;
+    padding:0 10px;
+}
+option li:hover {
+    background-color:white;
+    color:white;
+}
 @media only screen and (min-width: 1200px){
 .sphere {
     user-select: none;
     z-index: -1;
     position: absolute;
-    top: 100px;
-    right: 600px;
+    top: 170px;
+    right: 700px;
   }
 
   .cube {
     user-select: none;
     z-index: -1;
     position: absolute;
-    top: 510px;
-    right: 100px;
+    top: 590px;
+    right: 200px;
   }
 
   .card-submit {
@@ -220,7 +248,7 @@ export default {
   }
 
   .card {
-    margin-right: 9rem;
+    margin-right: 13rem;
     background-color: rgba(22, 21, 26, 0.3);
     border-radius: 30px;
     -webkit-backdrop-filter: blur(10px);
@@ -286,7 +314,7 @@ export default {
   }
 
   .hero {
-    padding-top: 4.4rem;
+    padding-top: 8.4rem;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
